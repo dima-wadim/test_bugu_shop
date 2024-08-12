@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
     "test_bugu_shop",
     "articles",
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
