@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import PublicArticleListView, PrivateArticleListView, UserCreateView, ArticleCreateView, ArticleUpdateDeleteView
+from articles.views import PublicArticleListView, PrivateArticleListView, UserCreateView, ArticleCreateView, \
+    ArticleUpdateDeleteView
 
 urlpatterns = [
     path('articles/public/', PublicArticleListView.as_view(), name='public_articles'),
