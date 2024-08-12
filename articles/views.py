@@ -1,25 +1,15 @@
-from rest_framework import generics, permissions
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from .models import Article
-from .serializers import ArticleSerializer, UserSerializer
-from django.contrib.auth.models import User
+from .serializers import ArticleSerializer
 
-class PublicArticleListView(generics.ListAPIView):
-    queryset = Article.objects.filter(is_private=False)
-    serializer_class = ArticleSerializer
-
-class PrivateArticleListView(generics.ListAPIView):
-    queryset = Article.objects.filter(is_private=True)
-    serializer_class = ArticleSerializer
-    permission_classes = [permissions.IsAuthenticated]
-
-class ArticleCreateView(generics.CreateAPIView):
+class ArticleViewSet(viewsets.ModelViewSet):
     queryset = Article.objects.all()
     serializer_class = ArticleSerializer
-    permission_classes = [permissions.IsAuthenticated]
 
-    def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
-
-class UserCreateView(generics.CreateAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
+    def get_permissions(self):
+        if self.request.method in ['PUT', 'DELETE']:
+            return [IsAdminUser()]
+        if self.request.method == 'POST':
+            return [IsAuthenticated()]
+        return super().get_permissions()
