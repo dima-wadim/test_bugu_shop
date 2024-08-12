@@ -1,5 +1,5 @@
 """
-URL configuration for test_bugu_shop project.
+URL configuration for test_bubu_shop project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.1/topics/http/urls/

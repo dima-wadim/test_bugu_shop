@@ -1,12 +1,12 @@
 from rest_framework import serializers
-from .models import CustomUser, Article
-
-class UserSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CustomUser
-        fields = '__all__'
+from .models import Article, CustomUser
 
 class ArticleSerializer(serializers.ModelSerializer):
     class Meta:
         model = Article
-        fields = '__all__'
+        fields = ['id', 'title', 'content', 'is_public', 'author']
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ['id', 'email', 'username', 'is_subscriber', 'is_author']
