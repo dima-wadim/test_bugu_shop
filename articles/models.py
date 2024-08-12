@@ -1,0 +1,11 @@
+from django.contrib.auth.models import AbstractUser
+from django.db import models
+
+class CustomUser(AbstractUser):
+    email = models.EmailField(unique=True)
+
+class Article(models.Model):
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    author = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    is_private = models.BooleanField(default=False)
