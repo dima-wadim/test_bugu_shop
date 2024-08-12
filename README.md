@@ -25,7 +25,7 @@ Test Bugu Shop - это веб-сервис, разработанный с ис�
 1. Клонируйте репозиторий:
 
     ```bash
-    git clone <your-repository-url>
+    git clone <https://github.com/dima-wadim/test_bugu_shop>
     cd test_bugu_shop
     ```
 
