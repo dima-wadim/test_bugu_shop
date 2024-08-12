@@ -157,4 +157,6 @@ REST_FRAMEWORK = {
     )
 }
 import django_heroku
+
+# Настройка Django для работы с Heroku
 django_heroku.settings(locals())
